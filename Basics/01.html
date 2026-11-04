@@ -7,6 +7,9 @@
             body {
                 background-color: lightblue;
             }
+            .green {
+                background-color: lightgreen;
+            }
         </style>
 
     </head>
@@ -15,16 +18,8 @@
         <button onclick="changeBg()">Click me to change background color</button>
         </div>
         <script>
-            const originalColor = getComputedStyle(document.body).backgroundColor; 
-            console.log(originalColor);
-            let color = originalColor;
             function changeBg() {
-                if (color === originalColor) {
-                    color = "lightgreen";
-                } else {
-                    color = originalColor;
-                }
-                document.body.style.backgroundColor = color;
+                    document.body.classList.toggle("green");
             }
         </script>
     </body>
