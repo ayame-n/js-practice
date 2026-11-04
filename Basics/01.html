@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+ <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Change background color</title>
+        <style>
+            body {
+                background-color: lightblue;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>
+        <button onclick="changeBg()">Click me to change background color</button>
+        </div>
+        <script>
+            const originalColor = getComputedStyle(document.body).backgroundColor; 
+            console.log(originalColor);
+            let color = originalColor;
+            function changeBg() {
+                if (color === originalColor) {
+                    color = "lightgreen";
+                } else {
+                    color = originalColor;
+                }
+                document.body.style.backgroundColor = color;
+            }
+        </script>
+    </body>
+ </html>
+
