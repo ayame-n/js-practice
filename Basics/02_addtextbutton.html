@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <title> Add Text Button </title>
+    <script>
+        //テキストを追加する関数
+        function addText(event){
+            let box = event.target.parentNode; //ボタンの親要素を取得
+            let pNode = document.createElement("p"); //p要素を作成
+            pNode.innerHTML = "テキストを追加しました"; //p要素に文字列を設定
+            box.appendChild(pNode); //p要素をボックスに追加
+        }
+        //テキストを削除する関数
+        function deleteText(event){
+            let box = event.target.parentNode; //ボタンの親要素を取得
+            let pNode = box.querySelector("p"); //ボックス内のp要素を取得
+            if(pNode){ //p要素が存在する場合のみ削除
+                box.removeChild(pNode); //p要素を削除
+            }
+        }
+        //イベントハンドラーはjs側ですべて設定するのが望ましい
+        //エレメントノード.addEventListner("イベント名",イベントハンドラーとして実行したい関数,キャプチャリングフラグ);
+
+        //JSは HTML文書の読み込みを終えてからしかアクセスできないので、「ページを読み終えた」イベントを監視
+        window.addEventListener("load", function(event){
+            let button = document.getElementById("add-text"); //ボタンのエレメントノードを取得
+            //ボタンのクリックイベントを監視して、クリックされたらaddText関数を実行する
+            button.addEventListener("click", addText, false);   
+
+            let deleteButton = document.getElementById("delete-text"); //ボタンのエレメントノードを取得
+            //ボタンのクリックイベントを監視して、クリックされたらdeleteText関数を実行する
+            deleteButton.addEventListener("click", deleteText, false);   
+        },false)
+    </script>
+ </head>
+ <body>
+    <div id="box">
+        <button id="add-text">テキストを追加する</button>
+        <button id="delete-text">テキストを削除する</button>
+    </div>
+ </body>
+</html>
